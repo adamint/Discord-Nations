@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Discord Nations.iml" filepath="$PROJECT_DIR$/.idea/modules/Discord Nations.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Discord_Nations_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Discord_Nations_main.iml" group="Discord Nations" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Discord_Nations_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Discord_Nations_test.iml" group="Discord Nations" />
+    </modules>
+  </component>
+</project>
