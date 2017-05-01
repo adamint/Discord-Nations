@@ -16,7 +16,7 @@ public abstract class Command {
     private String usage;
     private HashMap<String, Long> ratelimited = new HashMap<>();
 
-    public void sm(@NonNull String content, @NonNull TextChannel channel, @NonNull User user) {
+    public void sendMessage(@NonNull String content, @NonNull TextChannel channel, @NonNull User user) {
         try {
             if (content.length() <= 2000) {
                 channel.sendMessage(content).queue();
@@ -69,8 +69,9 @@ public abstract class Command {
         }
     }
 
-    public Command(String... aliases) {
+    public Command with(String... aliases) {
         this.aliases = aliases;
+        return this;
     }
 
     public Command setUsage(String s) {
@@ -98,7 +99,8 @@ public abstract class Command {
             long now = Instant.now().getEpochSecond();
             if (ratelimited.get(user.getId()) != null) {
                 if (ratelimited.get(user.getId()) > now) {
-
+                    channel.sendMessage("Whoah, hold on there " + user.getAsMention() + "! You can use this command again in " +
+                            String.valueOf(ratelimited.get(user.getId()) - now) + " seconds").queue();
                 }
             }
             else ratelimited.remove(user.getId());
@@ -106,5 +108,5 @@ public abstract class Command {
         onUsage(guild, channel, user, args, message);
     }
 
-    public abstract void onUsage(Guild guild, TextChannel channel, User user, String[] args, Message message)
+    public abstract void onUsage(Guild guild, TextChannel channel, User user, String[] args, Message message);
 }

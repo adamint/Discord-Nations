@@ -2,15 +2,17 @@ package execution;
 
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
+import static main.DiscordNations.botLogsShard;
+
 public class BotException {
     public BotException(Exception ex) {
         ex.printStackTrace();
-        botLogsShard.help.sendTranslatedMessage("```" + ExceptionUtils.getStackTrace(ex) + "```", botLogsShard.jda
-                .getTextChannelById("270572632343183361"), null);
+        botLogsShard.jda.getTextChannelById("308381860327718912").sendMessage("```" + ExceptionUtils.getStackTrace(ex) + "```")
+                .queue();
     }
 
     public BotException(String s) {
-        botLogsShard.help.sendTranslatedMessage("```" + s + "```", botLogsShard.jda.getTextChannelById
-                ("270572632343183361"), null);
+        botLogsShard.jda.getTextChannelById("308381860327718912").sendMessage("```" + s + "```")
+                .queue();
     }
 }
